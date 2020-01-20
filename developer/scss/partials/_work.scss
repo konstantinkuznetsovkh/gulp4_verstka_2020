@@ -1,0 +1,190 @@
+section#work {
+    div.layout {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 85px;
+
+        div.top {
+            padding-left: 15px;
+            padding-right: 15px;
+
+
+            h3 {
+                color: #222222;
+            }
+        }
+
+        p.midlle {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        div.label {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 116px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 24px;
+
+            h4 {
+                text-transform: uppercase;
+            }
+
+            ul {
+                li {
+                    cursor: pointer;
+                    display: inline-block;
+
+                    color: #6c6c6c;
+
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        position: relative;
+                        margin-right: 30px;
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            width: 1px;
+                            height: 18px;
+                            background: rgb(34, 34, 34);
+                            right: -15px;
+                            top: 4px;
+                        }
+                    }
+                }
+
+                li.active {
+                    color: rgb(34, 34, 34);
+                    text-shadow: 0 0 .45px #222;
+                }
+            }
+        }
+
+        div.filter_display {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            min-height: 267px;
+            transition: 5s height;
+
+            div.item {
+                position: absolute;
+                opacity: 0;
+                margin: 15px;
+                width: 0;
+                width: 268px;
+                height: 0;
+                background: #222222;
+                transition: 0s opacity, 1.5s height, 1.5s width;
+                text-align: center;
+
+                @media #{$tablet} {}
+
+                @media #{$mobile-big} {}
+
+
+                @media #{$mobile-small} {}
+
+                img {
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 5;
+                }
+
+                &:hover {
+
+                    .hover {
+                        transition: 1s;
+                        height: 100%;
+                        z-index: 6;
+                        top: 0;
+                        opacity: 1;
+                        width: 100%;
+
+                        h5 {
+                            padding-top: 67px;
+                        }
+
+                        p {
+                            transition: 1.1s;
+                            padding-top: 11px;
+                            padding-bottom: 27px;
+                        }
+
+                        svg {
+                            opacity: 1;
+                            transition: 1.5s;
+                        }
+                    }
+                }
+
+                .hover {
+                    user-select: none;
+                    transition: 1s;
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    height: 0;
+                    background: rgba(34, 34, 34, .95);
+                    z-index: 4;
+                    text-align: center;
+                    opacity: 0;
+
+                    h5 {
+                        transition: .7s;
+                        padding-top: 0;
+                        text-transform: uppercase;
+                        color: $white;
+                        font-size: 20px;
+                        font-family: 'Open Sans';
+                        font-weight: 400;
+                        line-height: 24px;
+                    }
+
+                    p {
+                        transition: .5s;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                        color: #b2b2b2;
+                        font-size: 14px;
+                    }
+
+                    svg {
+                        cursor: pointer;
+                        transition: .5s;
+                        opacity: 0;
+                    }
+                }
+            }
+
+            .show {
+                position: relative !important;
+                transition: cubic-bezier(0, 0, 1, 1) 3s;
+                opacity: 1 !important;
+                height: 237px !important;
+            }
+
+            div.item.web {
+                background: red;
+            }
+
+            div.item.photo {
+                background: pink;
+            }
+
+
+        }
+    }
+}

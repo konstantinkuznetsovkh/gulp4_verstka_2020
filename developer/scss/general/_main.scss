@@ -1,0 +1,385 @@
+/*GENERAL RESET STYLES*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+li,
+ul,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:hover,
+a:visited:hover {
+  text-decoration: none;
+}
+
+a:active,
+a:visited:hover {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+img {
+  border-style: none;
+  max-width: 100%;
+}
+
+
+form fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+input,
+textarea,
+select {
+  vertical-align: middle;
+  color: #000;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+input::-webkit-input-placeholder {
+  color: #ebedec;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #ebedec;
+}
+
+::selection {
+  color: #fff;
+  /* Цвет текста */
+  background: #3399ff;
+  /* Цвет фона */
+}
+
+::-moz-selection {
+  color: #fff;
+  /* Цвет текста */
+  background: #3399ff;
+  /* Цвет фона */
+}
+
+table {
+  /* border-collapse: collapse; не ставиться border-radius,но склеиваются ячецки */
+  border-spacing: 2px;
+  /* маржин в таблицах */
+  border-collapse: separate;
+  /* расклеивает ячейки */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+  // font-family: 'GothamBook';
+  // font-family: 'Lato', sans-serif;
+  font-size: 16px;
+
+  @media #{$tablet} {
+    font-size: 15px;
+  }
+
+  @media #{$mobile-big} {
+    font-size: 14px;
+  }
+
+  @media #{$mobile-small} {
+    font-size: 12px;
+  }
+
+}
+
+/* wrapper */
+#wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.layout {
+  margin: 0 auto;
+  position: relative;
+  width: 1400px;
+}
+
+footer {
+  display: block;
+  width: 100%;
+  margin: 0 0 0;
+  padding: 0 0 0;
+}
+
+section#main {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+header {
+  width: 100%;
+  display: block;
+  // position: relative;
+}
+
+//add class general for project////////////////////
+
+///header+team+clients+testimotials///////////
+div.overlay {
+  background-attachment: fixed;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.73) 17%, rgba(0, 0, 0, 0.66) 35%, rgba(0, 0, 0, 0.55) 62%, rgba(0, 0, 0, 0.4) 100%);
+  height: 100%;
+}
+
+///end header+team+clients+testimotials///////
+
+
+///team+services+clients+work+testimotials(+form&:)/////////
+///end team+services+clients+work+testimotials(+form&:)/////
+div.top {
+  padding-top: 100px;
+  margin-bottom: 91px;
+  position: relative;
+  text-align: center;
+
+  @media #{$mobile-big} {
+    padding-top: 55px
+  }
+
+  @media #{$mobile-small} {
+    padding-top: 55px
+  }
+
+  h3 {
+    font-size: 44px;
+    color: $white;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-family: "Open Sans";
+
+    // @media #{$tablet} {
+    //   line-height: 44px;
+    // }
+
+    @media #{$mobile-big} {
+      line-height: 44px;
+      font-size: 38px;
+    }
+
+    @media #{$mobile-small} {
+      line-height: 44px;
+      font-size: 38px;
+    }
+
+    span {
+      font-weight: 300;
+      font-family: "Open Sans";
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+    }
+
+    &:before {
+      background: $yellow;
+      bottom: -40px;
+      left: calc(50% - 99px/2);
+      width: 99px;
+      height: 5px;
+
+      @media #{$mobile-big} {
+        bottom: -30px;
+      }
+
+      @media #{$mobile-small} {
+        bottom: -30px
+      }
+    }
+
+    &:after {
+      background: rgba(252, 172, 69, 0.702);
+      bottom: -55px;
+      left: calc(50% - 67px/2);
+      width: 67px;
+      height: 5px;
+
+      @media #{$mobile-big} {
+        bottom: -45px
+      }
+
+      @media #{$mobile-small} {
+        bottom: -45px
+      }
+    }
+  }
+}
+
+///end team+services+clients+work+testimotials(+form&:)/////
+
+.links {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 84px;
+  margin-top: 70px;
+
+  @media #{$mobile-big} {
+    margin-top: 0;
+  }
+
+  @media #{$mobile-small} {
+    margin-top: 0;
+  }
+
+  a {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: $white;
+    margin: 0 6.5px;
+    cursor: pointer;
+
+    &.active {
+      background: $yellow;
+    }
+  }
+}
+
+//services+work//////////
+p.midlle {
+  color: #6c6c6c;
+  width: 100%;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 24px;
+  text-align: center;
+}
+
+//end services+work//////

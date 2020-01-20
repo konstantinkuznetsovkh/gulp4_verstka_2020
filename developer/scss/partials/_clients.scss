@@ -1,0 +1,51 @@
+section#clients {
+    background: url('../img/clients/back.jpg')no-repeat center/cover fixed;
+
+    div.layout {
+        div.top {
+            margin-bottom: 130px;
+
+            h3 {}
+        }
+
+        div.slider_clients {
+
+            // @extend .slider
+            div.slider_item {
+                padding: 0 113px 89px 113px;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+
+                @media #{$tablet} {
+                    img {
+                        padding-bottom: 10px;
+                    }
+                }
+
+                @media #{$mobile-big} {
+                    padding-bottom: 55px;
+
+                    img {
+                        padding-bottom: 10px;
+                    }
+                }
+
+                @media #{$mobile-small} {
+                    padding-bottom: 33px;
+
+                    img {
+                        padding-bottom: 10px;
+                    }
+
+                }
+            }
+
+        }
+
+        .links_clients {
+            @extend .links;
+            margin-top: 0;
+        }
+    }
+}
