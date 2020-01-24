@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "konstantinkuznetsov.kh",
+  "author": "https://github.com/konstantinkuznetsovkh",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -15,7 +15,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.1.3",
     "gulp-cli": "^2.2.0",
-    "gulp-sourcemaps": "^2.6.5",
     "gulp-uglifyjs": "^0.6.2"
   },
   "devDependencies": {
@@ -32,12 +31,13 @@
     "gulp-file-include": "^2.1.1",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlnano": "^0.1.0",
-        "gulp-imagemin": "^5.0.3",
+    "gulp-imagemin": "^5.0.3",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
     "gulp-size": "^3.0.0",
-    "gulp-uglify": "^3.0.2",  
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "gulp-webp": "^4.0.1"
   }

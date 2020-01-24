@@ -11,10 +11,11 @@
 		changed = r('gulp-changed'),
 		browserSync = r('browser-sync').create(),
 		scss = r('gulp-sass'),
+		sourcemaps = r('gulp-sourcemaps'), //добавляют размер в два раза		
 		autoprefixer = r('gulp-autoprefixer'),
 		gcmq = r('gulp-group-css-media-queries'),
 		cleanCSS = r('gulp-clean-css'),
-		html_include = r('gulp-file-include'),
+		// html_include = r('gulp-file-include'),
 		htmlnano = r('gulp-htmlnano'),
 		concat = r('gulp-concat'),
 		babel = r('gulp-babel'),
@@ -60,16 +61,19 @@
 	// this start tasks for developer///////////////////////////////
 	const styles = () => {
 		return gulp.src('developer/scss/all.scss')
+			.pipe(sourcemaps.init())
 			.pipe(plumber({
 				errorHandler: onError
 			}))
 			.pipe(scss())
+			.pipe(sourcemaps.write())
 			.pipe(gulp.dest('developer/css'))
 	};
 
 
 	const css = () => {
 		return gulp.src(['developer/css/all.css', 'developer/css/library_css/*.css'])
+			.pipe(sourcemaps.init())
 			.pipe(changed('production/css'))
 			.pipe(concat('all.css'))
 			.pipe(filesize({
@@ -80,12 +84,14 @@
 				overrideBrowserslist: ['< 0.2%'],
 				cascade: true
 			}))
-
+			.pipe(sourcemaps.init())
 			.pipe(gcmq())
 			.pipe(cleanCSS({
 				level: 2
 			}))
+			.pipe(sourcemaps.write())
 			// .pipe(plumber.stop())//не ясно зачем возвращать поведение по умолчанию
+			.pipe(sourcemaps.write())
 			.pipe(gulp.dest('production/css'))
 			.pipe(filesize({
 				title: 'after',
@@ -125,27 +131,27 @@
 			.pipe(webp())
 			.pipe(gulp.dest('production'))
 	};
-	const html_inc = () => {
-		return gulp.src(['developer/html/index.html'])
-			.pipe(filesize({
-				title: 'before',
-				showFiles: true
-			}))
-			.pipe(plumber({
-				errorHandler: onError
-			}))
+	// const html_inc = () => {
+	// 	return gulp.src(['developer/html/index.html'])
+	// 		.pipe(filesize({
+	// 			title: 'before',
+	// 			showFiles: true
+	// 		}))
+	// 		.pipe(plumber({
+	// 			errorHandler: onError
+	// 		}))
 
-			.pipe(html_include({
-				prefix: '@!',
-				basepath: '@file'
-			}))
+	// 		.pipe(html_include({
+	// 			prefix: '@!',
+	// 			basepath: '@file'
+	// 		}))
 
-			.pipe(gulp.dest('developer'))
-			.pipe(filesize({
-				title: 'after',
-				showFiles: true
-			}));
-	};
+	// 		.pipe(gulp.dest('developer'))
+	// 		.pipe(filesize({
+	// 			title: 'after',
+	// 			showFiles: true
+	// 		}));
+	// };
 
 	const html = () => {
 		return gulp.src(['developer/index.html'])
@@ -203,11 +209,13 @@
 		gulp.src('developer/js/*.js')
 			.pipe(concat('main.js'))
 			.pipe(changed('production/js'))
+			.pipe(sourcemaps.init())
 			.pipe(filesize({
 				title: 'before',
 				showFiles: true
 			}))
 			.pipe(uglify_js())
+			.pipe(sourcemaps.write())
 			.pipe(gulp.dest('production/js'))
 			.pipe(filesize({
 				title: 'after',
@@ -235,6 +243,7 @@
 			.pipe(browserSync.stream());
 	};
 	const build = gulp.series(clear, gulp.parallel(images, browsersync, html, styles, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
+	const production = gulp.series(clear, gulp.parallel(images, browsersync, html, styles, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
 	exports.browsersync = browsersync;
 	exports.clear = clear;
 	exports.styles = styles;
@@ -242,11 +251,12 @@
 	exports.images = images;
 	exports.js = js;
 	exports.watches = watches;
-	exports.html_inc = html_inc;
+	// exports.html_inc = html_inc;
 	exports.before_js_in_production = before_js_in_production;
 	exports.transfer_favicon = transfer_favicon;
 	exports.transfer_fonts = transfer_fonts;
 	exports.build = build;
+	exports.prod = production;
 	exports.default = build;
 
 })(require);
