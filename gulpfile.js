@@ -72,7 +72,7 @@
 
 
 	const css = () => {
-		return gulp.src(['developer/css/all.css', 'developer/css/library_css/*.css'])
+		return gulp.src(['developer/css/library_css/*.css','developer/css/all.css'])
 			.pipe(sourcemaps.init())
 			.pipe(changed('production/css'))
 			.pipe(concat('all.css'))
