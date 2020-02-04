@@ -60,6 +60,7 @@
 	};
 	// this start tasks for developer///////////////////////////////
 	const styles = () => {
+		del('developer/all.css');
 		return gulp.src('developer/scss/all.scss')
 			.pipe(sourcemaps.init())
 			.pipe(plumber({
