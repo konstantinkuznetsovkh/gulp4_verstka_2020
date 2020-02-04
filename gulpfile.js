@@ -45,11 +45,11 @@
 			notify: false // Отключаем уведомления			
 		});
 		gulp.watch('developer/index.html', gulp.parallel(html));
-		gulp.watch('developer/scss/**/*.scss', gulp.parallel(styles));
+		gulp.watch('developer/scss/**/*.scss', gulp.parallel(stylesSCSS));
 		gulp.watch('developer/css/**/*.css', gulp.parallel(css));
 		gulp.watch(['developer/js/library_js/**/*'], gulp.parallel(before_js_in_production));
 		gulp.watch('developer/js/library_js/main.js', gulp.parallel(before_2_js_in_production));
-		gulp.watch('developer/js/*', gulp.parallel(js));
+		gulp.watch('developer/js/*.js', gulp.parallel(js));
 		gulp.watch('developer/fonts', gulp.parallel(transfer_fonts));
 		gulp.watch('developer/img/**/*', gulp.parallel(img_min));
 		gulp.watch('developer/fonts/*', gulp.parallel(transfer_fonts));
@@ -59,22 +59,24 @@
 		return del('production/*');
 	};
 	// this start tasks for developer///////////////////////////////
-	const styles = () => {
+	const stylesSCSS = () => {
 		del('developer/all.css');
 		return gulp.src('developer/scss/all.scss')
-			.pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 			.pipe(plumber({
 				errorHandler: onError
 			}))
 			.pipe(scss())
 			.pipe(sourcemaps.write())
+			
+		
 			.pipe(gulp.dest('developer/css'))
 	};
 
 
 	const css = () => {
-		return gulp.src(['developer/css/library_css/*.css','developer/css/all.css'])
-			.pipe(sourcemaps.init())
+		return gulp.src([ 'developer/css/library_css/*.css','developer/css/all.css'])
+		.pipe(sourcemaps.init())
 			.pipe(changed('production/css'))
 			.pipe(concat('all.css'))
 			.pipe(filesize({
@@ -243,11 +245,11 @@
 			.pipe(gulp.dest('production'))
 			.pipe(browserSync.stream());
 	};
-	const build = gulp.series(clear, gulp.parallel(images, browsersync, html, styles, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
-	const production = gulp.series(clear, gulp.parallel(images, browsersync, html, styles, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
+	const build = gulp.series(clear, gulp.parallel(images, browsersync, html, stylesSCSS, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
+	const production = gulp.series(clear,gulp.parallel(images, html, stylesSCSS, css, before_js_in_production, before_2_js_in_production, js, transfer_favicon, transfer_fonts));
 	exports.browsersync = browsersync;
 	exports.clear = clear;
-	exports.styles = styles;
+	exports.stylesSCSS = stylesSCSS;
 	exports.css = css;
 	exports.images = images;
 	exports.js = js;
@@ -256,8 +258,10 @@
 	exports.before_js_in_production = before_js_in_production;
 	exports.transfer_favicon = transfer_favicon;
 	exports.transfer_fonts = transfer_fonts;
-	exports.build = build;
+
 	exports.prod = production;
+	exports.build = build;
+
 	exports.default = build;
 
 })(require);
